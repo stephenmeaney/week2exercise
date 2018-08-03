@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name="stockquote")
-public class Quote {
+public class QuoteEntity {
 
     @Id
     @Column(name="id")
