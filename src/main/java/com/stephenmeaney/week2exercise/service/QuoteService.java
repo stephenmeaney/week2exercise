@@ -2,7 +2,6 @@ package com.stephenmeaney.week2exercise.service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.stephenmeaney.week2exercise.QuoteAggregateInfo;
 import com.stephenmeaney.week2exercise.entity.QuoteEntity;
 import com.stephenmeaney.week2exercise.repository.QuoteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,10 +38,4 @@ public class QuoteService {
 
         return quoteList;
     }
-
-//    public QuoteAggregateInfo getAggregateData(String date) {
-//
-//        return quoteRepository.findMaxPrice();
-//
-//    }
 }

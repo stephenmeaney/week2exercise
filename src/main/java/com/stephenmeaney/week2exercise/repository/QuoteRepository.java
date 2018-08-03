@@ -1,21 +1,13 @@
 package com.stephenmeaney.week2exercise.repository;
 
-import com.stephenmeaney.week2exercise.QuoteAggregateInfo;
 import com.stephenmeaney.week2exercise.entity.QuoteEntity;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 
 @Repository
 public interface QuoteRepository extends CrudRepository<QuoteEntity, Long> {
-
-//    @Query(value = "SELECT MAX(price) AS maxPrice FROM week2stockquotes.stockquote", nativeQuery = true)
-//    QuoteAggregateInfo findMaxPrice();
-//
-//    @Query(value = "SELECT MAX(price) AS maxPrice FROM week2stockquotes.stockquote", nativeQuery = true)
-//    MPOnly getMaxPrice();
 
     @Query(value =
             "SELECT MIN(price) AS minPrice, MAX(price) AS maxPrice, SUM(volume) AS totalVolume, (\n" +
