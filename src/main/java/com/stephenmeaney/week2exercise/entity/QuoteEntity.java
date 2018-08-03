@@ -24,11 +24,11 @@ public class QuoteEntity {
     @Column(name="quote_date")
     private Timestamp date;
 
-//    public Quote(String symbol, double price, int volume, Timestamp quoteDate) {
+//    public QuoteEntity(String symbol, double price, int volume, Timestamp date) {
 //        this.symbol = symbol;
 //        this.price = price;
 //        this.volume = volume;
-//        this.quoteDate = quoteDate;
+//        this.date = date;
 //    }
 
     public long getId() {

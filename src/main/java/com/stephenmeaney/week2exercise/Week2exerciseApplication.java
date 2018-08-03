@@ -2,7 +2,7 @@ package com.stephenmeaney.week2exercise;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.stephenmeaney.week2exercise.entity.Quote;
+import com.stephenmeaney.week2exercise.entity.QuoteEntity;
 import com.stephenmeaney.week2exercise.repository.QuoteRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -27,13 +27,13 @@ public class Week2exerciseApplication {
         return args -> {
             System.out.println("Starting CommandLineRunner");
 //            Timestamp dt = new Timestamp(2018, 1, 1, 1, 1, 1, 1);
-//            Quote quote = new Quote("abcd", 12.13, 1000, dt);
+//            QuoteEntity quote = new QuoteEntity("abcd", 12.13, 1000, dt);
 //            repository.save(quote);
 
             ObjectMapper mapper = new ObjectMapper();
             URL url = new URL("https://bootcamp-training-files.cfapps.io/week1/week1-stocks.json");
 
-            List<Quote> quoteList = mapper.readValue(url, new TypeReference<List<Quote>>(){});
+            List<QuoteEntity> quoteList = mapper.readValue(url, new TypeReference<List<QuoteEntity>>(){});
             repository.saveAll(quoteList);
         };
     }
