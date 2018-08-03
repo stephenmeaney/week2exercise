@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS stockquote;
+
+CREATE TABLE stockquote (
+  id INT NOT NULL AUTO_INCREMENT,
+  symbol VARCHAR(4) NOT NULL,
+  price DECIMAL NOT NULL,
+  volume INT NOT NULL,
+  quote_date DATETIME NOT NULL,
+  PRIMARY KEY (id)
+);
