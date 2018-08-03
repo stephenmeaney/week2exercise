@@ -33,8 +33,7 @@ public class Week2exerciseApplication {
             ObjectMapper mapper = new ObjectMapper();
             URL url = new URL("https://bootcamp-training-files.cfapps.io/week1/week1-stocks.json");
 
-            List<Quote> quoteList = mapper.readValue(url, new TypeReference<List<Quote>>() {
-            });
+            List<Quote> quoteList = mapper.readValue(url, new TypeReference<List<Quote>>(){});
             repository.saveAll(quoteList);
         };
     }
