@@ -13,19 +13,17 @@ import java.util.List;
 public class QuoteController {
 
     private QuoteService quoteService;
-    private QuoteRepository quoteRepository;
 
     @Autowired
-    public QuoteController(QuoteService quoteService, QuoteRepository quoteRepository) {
+    public QuoteController(QuoteService quoteService) {
         this.quoteService = quoteService;
-        this.quoteRepository = quoteRepository;
     }
 
     @GetMapping("/{symbol}/{date}")
     public QuoteRepository.QuoteAggregateData getData(
             @PathVariable("symbol") String symbol, @PathVariable("date") String date) {
 
-        return quoteRepository.findAggregateQuoteData(symbol, date);
+        return quoteService.getQuoteAggregateData(symbol, date);
     }
 
     @PostMapping("/load")

@@ -38,4 +38,18 @@ public class QuoteService {
 
         return quoteList;
     }
+
+    public QuoteRepository.QuoteAggregateData getQuoteAggregateData(String symbol, String date) {
+        if (date.matches("\\d+-\\d+")) {
+            String[] splitDate = date.split("-");
+            String year = splitDate[0];
+            String month = splitDate[1];
+
+            return quoteRepository.findAggregateQuoteDataByMonth(symbol, year, month);
+
+        } else {
+            return quoteRepository.findAggregateQuoteDataByDate(symbol, date);
+        }
+
+    }
 }

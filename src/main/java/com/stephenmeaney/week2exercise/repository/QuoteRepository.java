@@ -18,7 +18,18 @@ public interface QuoteRepository extends CrudRepository<QuoteEntity, Long> {
             "       FROM week2stockquotes.stockquote)) AS closingPrice\n" +
             "FROM week2stockquotes.stockquote\n" +
             "WHERE date(quote_date) = ?2 AND symbol = ?1", nativeQuery = true)
-    QuoteAggregateData findAggregateQuoteData(String symbol, String date);
+    QuoteAggregateData findAggregateQuoteDataByDate(String symbol, String date);
+
+    @Query(value =
+            "SELECT MIN(price) AS minPrice, MAX(price) AS maxPrice, SUM(volume) AS totalVolume, (\n" +
+            "   SELECT price\n" +
+            "   FROM week2stockquotes.stockquote\n" +
+            "   WHERE YEAR(quote_date) = ?2 AND MONTH(quote_date) = ?3 AND symbol = ?1 AND quote_date = (\n" +
+            "       SELECT MAX(quote_date)\n" +
+            "       FROM week2stockquotes.stockquote)) AS closingPrice\n" +
+            "FROM week2stockquotes.stockquote\n" +
+            "WHERE YEAR(quote_date) = ?2 AND MONTH(quote_date) = ?3 AND symbol = ?1", nativeQuery = true)
+    QuoteAggregateData findAggregateQuoteDataByMonth(String symbol, String year, String month);
 
     interface QuoteAggregateData {
         double getMinPrice();
