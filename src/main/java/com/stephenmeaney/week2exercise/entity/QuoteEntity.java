@@ -8,12 +8,16 @@ import java.sql.Timestamp;
 public class QuoteEntity {
 
     @Id
-    @Column(name="id")
+    @Column(name="stockquote_id")
     @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;
 
-    @Column(name="symbol")
+    @Transient
     private String symbol;
+
+    @ManyToOne
+    @JoinColumn(name = "stocksymbol_id")
+    private SymbolEntity symbolEntity;
 
     @Column(name="price")
     private double price;
@@ -24,12 +28,6 @@ public class QuoteEntity {
     @Column(name="quote_date")
     private Timestamp date;
 
-//    public QuoteEntity(String symbol, double price, int volume, Timestamp date) {
-//        this.symbol = symbol;
-//        this.price = price;
-//        this.volume = volume;
-//        this.date = date;
-//    }
 
     public long getId() {
         return id;
@@ -45,6 +43,14 @@ public class QuoteEntity {
 
     public void setSymbol(String symbol) {
         this.symbol = symbol;
+    }
+
+    public SymbolEntity getSymbolEntity() {
+        return symbolEntity;
+    }
+
+    public void setSymbolEntity(SymbolEntity symbolEntity) {
+        this.symbolEntity = symbolEntity;
     }
 
     public double getPrice() {
@@ -67,7 +73,7 @@ public class QuoteEntity {
         return date;
     }
 
-    public void setDate(Timestamp quoteDate) {
-        this.date = quoteDate;
+    public void setDate(Timestamp date) {
+        this.date = date;
     }
 }

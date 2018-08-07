@@ -1,6 +1,6 @@
 package com.stephenmeaney.week2exercise.controller;
 
-import com.stephenmeaney.week2exercise.entity.QuoteEntity;
+import com.stephenmeaney.week2exercise.entity.SymbolEntity;
 import com.stephenmeaney.week2exercise.repository.QuoteRepository;
 import com.stephenmeaney.week2exercise.service.QuoteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ public class QuoteController {
     }
 
     @PostMapping("/load")
-    public List<QuoteEntity> postTest() {
+    public List<SymbolEntity> postTest() {
         return quoteService.loadData();
     }
 }
