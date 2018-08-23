@@ -4,12 +4,12 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name="stockquote")
+@Table(name = "stockquote")
 public class QuoteEntity {
 
     @Id
-    @Column(name="stockquote_id")
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name = "stockquote_id")
+    @GeneratedValue
     private long id;
 
     @Transient
@@ -19,13 +19,13 @@ public class QuoteEntity {
     @JoinColumn(name = "stocksymbol_id")
     private SymbolEntity symbolEntity;
 
-    @Column(name="price")
+    @Column(name = "price")
     private double price;
 
-    @Column(name="volume")
+    @Column(name = "volume")
     private int volume;
 
-    @Column(name="quote_date")
+    @Column(name = "quote_date")
     private Timestamp date;
 
 

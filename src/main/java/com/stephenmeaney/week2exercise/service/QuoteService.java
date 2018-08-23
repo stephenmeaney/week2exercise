@@ -33,13 +33,12 @@ public class QuoteService {
             ObjectMapper mapper = new ObjectMapper();
             URL url = new URL("https://bootcamp-training-files.cfapps.io/week1/week1-stocks.json");
 
-            List<QuoteEntity> quoteList = mapper.readValue(url, new TypeReference<List<QuoteEntity>>(){});
+            List<QuoteEntity> quoteList = mapper.readValue(url, new TypeReference<List<QuoteEntity>>() {
+            });
 
             Map<String, List<QuoteEntity>> symbolQuoteMap = quoteList.stream().collect(Collectors.groupingBy(QuoteEntity::getSymbol));
 
             for (Map.Entry<String, List<QuoteEntity>> entry : symbolQuoteMap.entrySet()) {
-                System.out.println(entry.getKey());
-                System.out.println(entry.getValue());
                 symbolEntityList.add(new SymbolEntity(entry.getKey(), entry.getValue()));
             }
 

@@ -4,12 +4,12 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="stocksymbol")
+@Table(name = "stocksymbol")
 public class SymbolEntity {
 
     @Id
-    @Column(name="stocksymbol_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "stocksymbol_id")
+    @GeneratedValue
     private long id;
 
     @Column(name = "symbol")
